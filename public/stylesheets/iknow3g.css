@@ -1,0 +1,26 @@
+li.selected {
+  background-color: yellow;
+}
+
+table.progress-bar {
+  float: right;
+}
+table.progress-bar td {
+  width: 5px;
+  height: 3px;
+}
+table.progress-bar td.blank {background-color:#555555;}
+table.progress-bar td.not-yet {background-color:#aaaaaa;}
+table.progress-bar td.done {background-color:#ff0000;}
+
+div.errors {
+  color: red;
+  background-color: white;
+  border: 1px solid red;
+  font: 12px Helvetica;
+  text-align: center;
+  text-shadow: white 0 1px 0;
+  margin: 5px 10px 17px 0;
+  padding: 3px;
+  -webkit-border-radius: 5px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="blue" />
+  <title>iKnow 3G!</title>
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <%= stylesheet_link_tag  '/iphone-universal/stylesheets/iphone' %>
+  <%= stylesheet_link_tag  'iknow3g' %>
+  <%= javascript_include_tag :defaults, 'iknow3g' %>
+  <% (@javascripts || []).each do |js| %>
+    <%= javascript_include_tag js %>
+  <% end %>
+  <%= javascript_tag %Q{
+    Event.observe(window, 'load', function() {
+      setTimeout(function(){window.scrollTo(0, 1)}, 100);
+    });
+  } %>
+</head>
+
+<body>
+  <div id="header">
+    <h1><%= title_or_action_name %></h1>
+    <%= link_to @back_navi[:label], @back_navi[:url], :class => 'nav', :id => 'backButton' if @back_navi -%>
+    <%= link_to @action_navi[:label], @action_navi[:url], :class => 'nav Action' if @action_navi -%>
+    <%= progress_bar(current_exam || last_exam, 'nav Action') if @show_progress_bar %>
+  </div>
+
+  <%= yield %>  
+
+  <p class="footer">
+    <strong>Copyright &copy; 2008 ANDO Yasushi</strong><br />
+    <%= link_to 'Universal iPhone UI Kit', 'http://code.google.com/p/iphone-universal/' %><br />
+    <%= link_to image_tag('http://developer.iknow.co.jp/files/28819/powered_by_iknow_attribution_110x22_on_white2_round.png', :alt => 'powerd by iKnow!', :border => 0),
+      'http://www.iknow.co.jp/' %>
+    <%= link_to image_tag('ror_powered.png', :alt => 'ror powered', :border => 0), 'http://rubyonrails.org/' %>
+  </p>
+</body>
+</html>
+

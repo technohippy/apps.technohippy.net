@@ -1,0 +1,15 @@
+<h1><%= @success ? 'Good!' : 'Wrong...' %></h1>
+<ul class="data">
+  <li>
+    <p><%= @progress.item.sentence_text %></p>
+  </li>
+</ul>
+<%= replay_button @progress.item.sentence_sound, 'x30' %>
+
+<p class="standard">
+  <%- if @progress.exam.finished? -%>
+    <%= link_to 'Complete', {:action => 'complete', :exam_id => @progress.exam}, :class => 'button white' %>
+  <%- else -%>
+    <%= link_to 'Next', {:action => 'exam'}, :class => 'button white' %>
+  <%- end -%>
+</p>

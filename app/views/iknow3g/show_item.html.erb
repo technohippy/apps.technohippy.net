@@ -1,0 +1,15 @@
+<ul>
+  <li>
+    <%= @item.text %>
+    <small><%= replay_button @item.sound %></small>
+  </li>
+  <li>
+    <%= @item.translation %>
+  </li>
+</ul>
+<ul class="data">
+  <li>
+    <p><%= @item.sentence_text %></p>
+  </li>
+</ul>
+<%= replay_button @item.sentence_sound, 'x30' %>

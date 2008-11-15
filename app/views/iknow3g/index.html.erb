@@ -1,0 +1,40 @@
+<ul class="profile">
+  <li class="picture"><%= user_image_tag @login_user %></li>
+  <li class="clearfix">
+    <h2><%= @login_user.profile['name'] %></h2>
+    <p><%= @login_user.profile['description'] %></p>
+  </li>
+</ul>
+<br style="clear:both" />
+
+<p class="standard"><%= link_to 'Start', {:action => 'learn'}, :class => 'button white' %></p>
+
+<h1 class="label">Results</h1>
+<ul class="field">
+  <li>
+    <h3>Current</h3>
+    <%= @login_user.current_exam.finished_items.size rescue 0 %> / <%= @login_user.current_exam.items.size rescue Iknow3gExam::NUM_OF_ITEMS %> items
+    (<%= progress_percentage current_exam %> %)
+  </li>
+  <li>
+    <h3>Complete</h3>
+    <%= @login_user.finished_exams.size %> reviews
+  </li>
+</ul>
+<h1>iKnow!</h1>
+<ul class="field">
+  <li>
+    <h3>iKnow!</h3>
+    <%= @login_user.results['iknow'] %> items
+  </li>
+  <li>
+    <h3>Dictation</h3>
+    <%= @login_user.results['dictation'] %> items
+  </li>
+</ul>
+
+<h1>About</h1>
+<ul>
+  <li><%= link_to 'iKnow 3G!', :action => 'about_iknow3g' %></li>
+  <li><%= link_to 'Author', :action => 'about_author' %></li>
+</ul>

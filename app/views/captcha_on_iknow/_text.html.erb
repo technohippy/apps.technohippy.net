@@ -1,0 +1,15 @@
+<div class="iknow-captcha-text">
+  <h1><%= @captcha.question %></h1>
+  <ul>
+    <%- @captcha.choices.each do |choice| -%>
+      <li class="iknow-captcha-choice" onclick="javascript:iknow_captcha.handle_choice_text(this)"><%= choice %></li>
+    <%- end -%>
+  </ul>
+  <div class="iknow-captcha-tools">
+    <%= link_to_remote image_tag('volume.gif', :alt => 'sound', :border => '0'), :update => 'captcha', 
+      :url => {:controller => 'captcha_on_iknow', :action => 'sound'} %>
+    <%= link_to_remote image_tag('reload.gif', :alt => 'reload', :border => '0'), :update => 'captcha', 
+      :url => {:controller => 'captcha_on_iknow', :action => 'reset'} %>
+  </div>
+</div>
+<%= hidden_field_tag IKnowCaptcha.param_key %>

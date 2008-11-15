@@ -1,0 +1,50 @@
+div.iknow-captcha-text {
+  margin: 5px;
+  padding: 5px 10px;
+  width: 300px;
+  height: 130px;
+  background-color: #0189D8;
+  color: white;
+}
+div.iknow-captcha-text h1 {
+  font-size: 12px;
+  text-align: center;
+  background-color: white;
+  color: #0189D8;
+  padding: 3px;
+}
+div.iknow-captcha-text ul {
+  padding: 0;
+  margin-top: 0;
+  width: 260px;
+  height: 80px;
+  background-color: white;
+  border: 1px solid white;
+  float: left;
+}
+div.iknow-captcha-text ul li {
+  margin: 0;
+  list-style-type: none;
+  float: left;
+  width: 128px;
+  height: 38px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #0189D8;
+  margin: 1px;
+  overflow: hidden;
+}
+
+div.iknow-captcha-text ul li.iknow-captcha-selected {
+  background-color: white;
+  color: #0189D8;
+}
+
+div.iknow-captcha-tools {
+  width: 20px;
+  float: right;
+}
+
+div.iknow-captcha-tools img {
+  margin-top: 8px;
+}

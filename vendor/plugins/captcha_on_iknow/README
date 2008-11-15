@@ -1,0 +1,26 @@
+Captch on iKnow!
+================
+
+How To Use
+----------
+
+1. Generate some files
+./script/generate captcha_on_iknow [your iknow account]
+
+2. Include some javascripts and stylesheets
+(ex)
+<%= javascript_include_tag :defaults %>    
+<%= stylesheet_link_tag 'captcha_on_iknow' %>    
+<%= captcha_on_iknow_js_tag %>
+
+3. Set a before filter at the controller in whose views the captcha is used
+(ex)
+class PostsController < ApplicationController
+  iknow_captcha_check :only => ['create', 'update']
+  # snip...
+
+4. Set a captcha field in views
+(ex)
+<%= iknow_captcha_field %>
+
+Copyright (c) 2008 ANDO Yasushi, released under the MIT license

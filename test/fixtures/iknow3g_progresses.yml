@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  iknow3g_item_id: 1
+  iknow3g_exam_id: 1
+  point: 1
+  position: 1
+  finished_at: 2008-10-29 00:46:49
+
+two:
+  iknow3g_item_id: 1
+  iknow3g_exam_id: 1
+  point: 1
+  position: 1
+  finished_at: 2008-10-29 00:46:49

@@ -1,0 +1,19 @@
+<h1>Editing captcha_on_iknow_demo</h1>
+
+<% form_for(@captcha_on_iknow_demo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= iknow_captcha_field %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @captcha_on_iknow_demo %> |
+<%= link_to 'Back', captcha_on_iknow_demos_path %>

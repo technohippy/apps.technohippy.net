@@ -1,0 +1,21 @@
+<h1>Fill Words</h1>
+<ul class="data">
+  <li>
+    <p><%= @question %></p>
+  </li>
+</ul>
+<%= replay_button @progress.item.sentence_sound, 'x30' %>
+
+<ul class="form">
+  <li><%= text_iphone_field_tag :first, '(1)' %></li>
+  <li><%= text_iphone_field_tag :second, '(2)' %></li>
+  <li><%= text_iphone_field_tag :third, '(3)' %></li>
+</ul>
+
+<% form_tag({:action => 'answer'}, :id => 'answer_form') do %>
+  <%= hidden_field_tag :type, 'word_in_sentence' %>
+  <%= hidden_field_tag :progress_id, @progress.id %>
+  <%= hidden_field_tag :question, @answer.join(' ') %>
+  <%= hidden_field_tag :answer %>
+<% end %>
+<p class="standard"><%= link_to 'Answer', 'javascript:$("answer").value = $("first").value + " " + $("second").value + " " + $("third").value; $("answer_form").submit()', :class => 'button white' %></p>

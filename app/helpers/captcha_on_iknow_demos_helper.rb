@@ -1,0 +1,2 @@
+module CaptchaOnIknowDemosHelper
+end

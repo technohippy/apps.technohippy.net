@@ -1,0 +1,11 @@
+<h1>Words</h1>
+<ul class="field">
+  <%- @items.each do |item| -%>
+    <li>
+      <%= render :partial => 'iknow_item', :locals => {:item => item, :translation => true} %>
+    </li>
+  <%- end -%>
+</ul>
+<p>
+  <%= link_to 'Back to top', {:action => 'index'}, :class => 'button white' %>
+</p>

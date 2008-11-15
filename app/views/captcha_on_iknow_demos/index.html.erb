@@ -1,0 +1,20 @@
+<h1>Listing captcha_on_iknow_demos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% for captcha_on_iknow_demo in @captcha_on_iknow_demos %>
+  <tr>
+    <td><%=h captcha_on_iknow_demo.name %></td>
+    <td><%= link_to 'Show', captcha_on_iknow_demo %></td>
+    <td><%= link_to 'Edit', edit_captcha_on_iknow_demo_path(captcha_on_iknow_demo) %></td>
+    <td><%= link_to 'Destroy', captcha_on_iknow_demo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New captcha_on_iknow_demo', new_captcha_on_iknow_demo_path %>

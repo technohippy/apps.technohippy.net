@@ -1,0 +1,15 @@
+<h1>Words</h1>
+<ul class="field">
+  <%- current_items.each do |item| -%>
+    <li>
+      <%= render :partial => 'iknow_item', :locals => {:item => item, :translation => true} %>
+    </li>
+  <%- end -%>
+</ul>
+<p>
+  <%- if current_exam.finished? -%>
+    <%= link_to 'Back to index', {:action => 'index'}, :class => 'button white' %>
+  <%- else -%>
+    <%= link_to 'Exam', {:action => 'exam'}, :class => 'button white' %>
+  <%- end -%>
+</p>

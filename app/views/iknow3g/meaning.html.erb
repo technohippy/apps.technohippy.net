@@ -1,0 +1,20 @@
+<h1>Choose The Meaning</h1>
+<ul>
+  <li>
+    <%= render :partial => 'iknow_item', :locals => {:item => @progress.item, :translation => false} %>
+  </li>
+</ul>
+
+<ul id="answers">
+  <%- @progress.multiple_choices.each do |choice| -%>
+    <li onclick="javascript:iknow3g.choose_answer(this, '<%= choice[:value].gsub("'", "") %>')"><%= choice[:label] %></li>
+  <%- end -%>
+</ul>
+
+<% form_tag({:action => 'answer'}, :id => 'answer_form') do %>
+  <%= hidden_field_tag :type, 'meaning' %>
+  <%= hidden_field_tag :progress_id, @progress.id %>
+  <%= hidden_field_tag :question, @progress.item.word %>
+  <%= hidden_field_tag :answer %>
+<% end %>
+<p class="standard"><%= link_to 'Answer', 'javascript:$("answer_form").submit()', :class => 'button white' %></p>

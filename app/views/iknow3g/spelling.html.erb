@@ -1,0 +1,10 @@
+<% form_tag({:action => 'answer'}, :id => 'answer_form') do |f| %>
+  <%= hidden_field_tag :type, 'spelling' %>
+  <%= hidden_field_tag :progress_id, @progress.id %>
+  <%= hidden_field_tag :question, @progress.item.word %>
+  <h1 class="label"><%= @progress.item.translation %></h1>
+  <ul class="form">
+    <li><%= text_iphone_field_tag :answer, 'Spell' %></li>
+  </ul>
+<% end %>
+<p class="standard"><%= link_to 'Answer', 'javascript:$("answer_form").submit()', :class => 'button white' %></p>
