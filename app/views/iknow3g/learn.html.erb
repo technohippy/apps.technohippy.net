@@ -8,8 +8,8 @@
 </ul>
 <p>
   <%- if current_exam.finished? -%>
-    <%= link_to 'Back to index', {:action => 'index'}, :class => 'button white' %>
+    <%= link_to 'Back to index', {:action => 'index'}, :class => 'button blue' %>
   <%- else -%>
-    <%= link_to 'Exam', {:action => 'exam'}, :class => 'button white' %>
+    <%= link_to 'Exam', {:action => 'exam'}, :class => 'button blue' %>
   <%- end -%>
 </p>

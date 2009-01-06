@@ -8,9 +8,9 @@
 
 <p class="standard">
   <%- if @progress.exam.finished? -%>
-    <%= link_to 'Complete', {:action => 'complete', :exam_id => @progress.exam}, :class => 'button white' %>
+    <%= link_to 'Complete', {:action => 'complete', :exam_id => @progress.exam}, :class => 'button blue' %>
   <%- else -%>
-    <%= link_to 'Next', {:action => 'exam'}, :class => 'button white' %>
+    <%= link_to 'Next', {:action => 'exam'}, :class => 'button blue' %>
   <%- end -%>
 </p>
 

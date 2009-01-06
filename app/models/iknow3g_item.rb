@@ -1,5 +1,15 @@
 class Iknow3gItem < ActiveRecord::Base
   has_many :progresses, :class_name => 'Iknow3gProgress', :foreign_key => 'iknow3g_item_id'
+  
+  def self.valid_hash?(hash)
+    hash['cue']['text']
+    hash['cue']['sound']
+    hash['responses'][0]['quizzes'][0]['question']
+    hash['responses'][0]['quizzes'][0]['answer']
+    true
+  rescue
+    false
+  end
 
   # TODO: it there some better ways to do this?
   def data=(hash); self[:data] = hash.to_json end

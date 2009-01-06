@@ -28,7 +28,7 @@ class Iknow3gProgress < ActiveRecord::Base
     #distractors = (item.distractors || exam.items.map{|i| i.translation}).shuffle
     distractors = exam.items.shuffle
     choices = distractors.map{|d| {:label => d.translation, :value => d.word}}
-    choices.last[:label] = '[上の選択肢にない]'
+    choices.last[:label] = '[該当なし]'
     choices
   end
 end

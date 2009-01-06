@@ -1,4 +1,17 @@
+body {
+  background-color: rgb(197,230,254);
+}
+
+div#header {
+  background-color: #0189D8;
+}
+
+p.footer {
+  margin-top: 40px;
+}
+
 li.selected {
+  background-color: #bbeeff;
   background-color: yellow;
 }
 
@@ -23,4 +36,8 @@ div.errors {
   margin: 5px 10px 17px 0;
   padding: 3px;
   -webkit-border-radius: 5px;
+}
+
+a.special-button {
+  margin-top: 15px;
 }

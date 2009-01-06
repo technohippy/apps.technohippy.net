@@ -8,7 +8,8 @@ class Iknow3gExam < ActiveRecord::Base
 
   def construct
     studied_items = Iknow3gApi.items_studied(user.name, :per_page => NUM_OF_CANDIDATE_ITEMS)
-    random_items = studied_items.shuffle
+    #random_items = studied_items.shuffle
+    random_items = studied_items.select{|item| Iknow3gItem.valid_hash? item}.shuffle # TODO:
     random_items[0..(NUM_OF_ITEMS-1)].each_with_index do |item, index|
       if item['sentences'].empty?
         item['sentences'] = Iknow3gApi.search_sentences URI.escape(item['cue']['text'])

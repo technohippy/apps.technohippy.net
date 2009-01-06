@@ -19,9 +19,9 @@
   <h1 class="label">Actions</h1>
   <p class="standard">
     <%- if session[:user].current_exam -%>
-      <%= link_to 'Reset Current Exam', {:action => 'clear', :target => 'current'}, :confirm => 'Are you sure to clear?', :class => "button white" %>
+      <%= link_to 'Reset Current Exam', {:action => 'clear', :target => 'current'}, :confirm => 'Are you sure to clear?', :class => "button red special-button" %>
     <%- end -%>
-    <%= link_to 'Clear All Exams', {:action => 'clear', :target => 'all'}, :confirm => 'Are you sure to clear?', :class => "button white" %>
+    <%= link_to 'Clear All Exams', {:action => 'clear', :target => 'all'}, :confirm => 'Are you sure to clear?', :class => "button red special-button" %>
   </p>
 <%- end -%>
 
