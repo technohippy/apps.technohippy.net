@@ -3,6 +3,13 @@
     <%= flash[:errors] %>
   </div>
 <%- end -%>
+<%- unless session[:user] -%>
+  <div style="text-align:right; padding:10px; padding-bottom:0">
+    <span style="color:blue; text-decoration:underline" onclick="javascript:$('user_name').value='guest'; $('user_password').value='guest'; $('user_iknow_user').value='iknow3g'">
+      Set guest account for the contest
+    </span>
+  </div>
+<%- end -%>
 <% form_tag({:action => 'setup'}, :id => 'user_form') do %>
   <h1 class="label">Account for this site</h1>
   <ul class="form">

@@ -1,9 +1,12 @@
 <%- if translation -%>
   <h3><%= item.translation %></h3>
+  <small style="margin-top:-7px; margin-right:-10px;">
+    <%= replay_button item.sound %>
+  </small>
+  <%= link_to item.text, :action => 'show_item', :id => item, :back => url_for %>
+<%- else -%>
+  <small style="margin-top:-7px; margin-right:-5px;">
+    <%= replay_button item.sound %>
+  </small>
+  <%= item.text %>
 <%- end -%>
-<small style="margin-top:-7px; margin-right:-10px;">
-  <%= replay_button item.sound %>
-</small>
-<%= item.text %>
-<%#= link_to item.text, :action => 'show_item', :id => item, :back => url_for %>
-

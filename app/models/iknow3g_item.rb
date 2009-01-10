@@ -28,7 +28,7 @@ class Iknow3gItem < ActiveRecord::Base
   def sentence; data['sentences'].first end
   def sentence_text; sentence['text'] end
   def sentence_sound; sentence['sound'] end
-  #def sentence_text_image; sentence['image'] end
+  def sentence_text_image; sentence['image'] end
   #def sentence_translation; sentence['translations']['text'] end
   #def sentence_translation_sound; sentence['translations']['sound'] end
   #def sentence_translation_image; sentence['translations']['image'] end

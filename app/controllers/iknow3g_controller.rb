@@ -5,6 +5,7 @@ class Iknow3gController < ApplicationController
   before_filter :check_username, :except => ['settings', 'setup', 'check', 'checked', 'clear_username']
 
   def index
+    @title = 'iKnow 3G!'
     @action_navi = {
       :url => url_for(:action => 'settings'),
       :label => 'Settings'
@@ -149,6 +150,7 @@ class Iknow3gController < ApplicationController
 
   def show_item
     @item = Iknow3gItem.find params[:id]
+    @title = @item.text.capitalize
     @back_navi = {
       :url => params[:back],
       :label => 'Back'

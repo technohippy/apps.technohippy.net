@@ -10,6 +10,13 @@ p.footer {
   margin-top: 40px;
 }
 
+#copyright {
+  font: 14px Helvetica;
+  font-weight: bold;
+  color: rgb(76,86,108);
+  text-shadow: white 0 1px 0;
+}
+
 li.selected {
   background-color: #bbeeff;
   background-color: yellow;

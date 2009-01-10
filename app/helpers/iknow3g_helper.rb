@@ -16,9 +16,11 @@ module Iknow3gHelper
   end
 
   def user_image_tag(user)
-    image_name = (user.profile['icon_url'] || '').split('/').last
-    image_tag "http://www.iknow.co.jp/assets/users/#{image_name}", 
-      :alt => user.profile['name'], :size => '54x54'
+    if user and user.profile and user.profile['icon_url']
+      image_tag user.profile['icon_url'], :alt => user.profile['name'], :size => '54x54'
+    else
+      ''
+    end
   end
 
   def current_exam

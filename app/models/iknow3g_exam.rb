@@ -7,11 +7,11 @@ class Iknow3gExam < ActiveRecord::Base
   has_many :items, :through => :progresses
 
   def construct
-    studied_items = Iknow3gApi.items_studied(user.name, :per_page => NUM_OF_CANDIDATE_ITEMS)
+    studied_items = Iknow3gApi.items_studied(user.iknow_user, :per_page => NUM_OF_CANDIDATE_ITEMS)
     #random_items = studied_items.shuffle
     random_items = studied_items.select{|item| Iknow3gItem.valid_hash? item}.shuffle # TODO:
     random_items[0..(NUM_OF_ITEMS-1)].each_with_index do |item, index|
-      if item['sentences'].empty?
+      if item['sentences'].nil? or item['sentences'].empty?
         item['sentences'] = Iknow3gApi.search_sentences URI.escape(item['cue']['text'])
       end
       item_record = Iknow3gItem.create :key => item['cue']['text'], :data => item, :have_not_sentence => item['sentences'].empty?

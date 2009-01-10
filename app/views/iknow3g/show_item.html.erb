@@ -1,7 +1,14 @@
+<%- if @item.sentence_text_image -%>
+<ul>
+  <li style="text-align:center"><%= image_tag @item.sentence_text_image, :width => '250' %></li>
+</ul>
+<%- end -%>
 <ul>
   <li>
     <%= @item.text %>
-    <small><%= replay_button @item.sound %></small>
+    <small style="margin-top:-7px; margin-right:-5px;">
+      <%= replay_button @item.sound %>
+    </small>
   </li>
   <li>
     <%= @item.translation %>

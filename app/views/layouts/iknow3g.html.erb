@@ -31,10 +31,9 @@
   <%= yield %>  
 
   <p class="footer">
-    <strong>Copyright &copy; 2008 ANDO Yasushi</strong><br />
-    <%= link_to 'Universal iPhone UI Kit', 'http://code.google.com/p/iphone-universal/' %><br />
-    <%= link_to image_tag('http://developer.iknow.co.jp/files/28819/powered_by_iknow_attribution_110x22_on_white2_round.png', :alt => 'powerd by iKnow!', :border => 0),
-      'http://www.iknow.co.jp/' %>
+    <strong id="copyright">Copyright &copy; 2008 ANDO Yasushi</strong><br />
+    <%= link_to image_tag('uiuikit.png', :alt => 'Universal iPhone UI Kit', :border => 0), 'http://code.google.com/p/iphone-universal/' %>
+    <%= link_to image_tag('http://developer.iknow.co.jp/files/28819/powered_by_iknow_attribution_110x22_on_white2_round.png', :alt => 'powerd by iKnow!', :border => 0), 'http://www.iknow.co.jp/' %>
     <%= link_to image_tag('ror_powered.png', :alt => 'ror powered', :border => 0), 'http://rubyonrails.org/' %>
   </p>
 </body>
