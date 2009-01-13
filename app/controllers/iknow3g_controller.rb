@@ -53,18 +53,24 @@ class Iknow3gController < ApplicationController
 
   def setup
     @user = Iknow3gUser.find_by_name params[:user][:name]
+    should_clear_current_exam = false
     if @user
       if session[:user] and session[:user] == @user
         @user.password = params[:user][:password]
       else
         @user.check_or_raise params[:user][:password]
       end
+      should_clear_current_exam = (@user.current_exam and (@user.iknow_user != params[:user][:iknow_user]))
       @user.iknow_user = params[:user][:iknow_user]
     else
       @user = Iknow3gUser.new params[:user]
     end
     @user.save!
     @user.check_iknow_if_needed
+    if should_clear_current_exam
+      delete_exam @user.current_exam 
+      @user.reload
+    end
     cookies[:user_id] = @user.id.to_s
     session[:user] = @user
     redirect_to :action => 'index'
@@ -117,8 +123,9 @@ class Iknow3gController < ApplicationController
     set_back_to_index
     set_progress_bar
     @anwer = params[:answer]
-    @success = normalize_word(params[:question]) == normalize_word(params[:answer])
     @progress = Iknow3gProgress.find params[:progress_id]
+    lang = @progress.item.lang
+    @success = normalize_word(params[:question], lang) == normalize_word(params[:answer], lang)
     @progress.progress! if @success
     method_name = "answer_#{params[:type]}"
     send method_name
@@ -187,10 +194,13 @@ class Iknow3gController < ApplicationController
     #@login_user = session[:user]
   end
 
-  def normalize_word(word)
+  def normalize_word(word, lang='en')
     return '' if word.blank?
     #word.gsub(%r{</?spell>}, '').gsub(/[,.:;'"\\\-_〜]/, '').gsub(/\s+/, ' ').downcase.strip
-    word.downcase.gsub(%r{</?spell>}, '').gsub(/[^a-z]/, '')
+    #word.downcase.gsub(%r{</?spell>}, '').gsub(/[^a-z]/, '')
+    word = word.downcase.gsub(%r{</?spell>}, '')
+    word = word.gsub(/[^a-z]/, '') unless ['ja', 'cn'].include? lang
+    word
   end
 
   def delete_exam(exam)

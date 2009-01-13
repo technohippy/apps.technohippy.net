@@ -1,15 +1,24 @@
 <h1>Words</h1>
-<ul class="field">
-  <%- current_items.each do |item| -%>
+<%- unless current_items.empty? -%>
+  <ul class="field">
+    <%- current_items.each do |item| -%>
+      <li>
+        <%= render :partial => 'iknow_item', :locals => {:item => item, :translation => true} %>
+      </li>
+    <%- end -%>
+  </ul>
+  <p>
+    <%- if current_exam.finished? -%>
+      <%= link_to 'Back to index', {:action => 'index'}, :class => 'button blue' %>
+    <%- else -%>
+      <%= link_to 'Exam', {:action => 'exam'}, :class => 'button blue' %>
+    <%- end -%>
+  </p>
+<%- else -%>
+  <ul class="data">
     <li>
-      <%= render :partial => 'iknow_item', :locals => {:item => item, :translation => true} %>
+      Something wrong happened to create exams.<br />
+      Please try <%= link_to 'Reset Current Exam', :action => 'settings' %>.
     </li>
-  <%- end -%>
-</ul>
-<p>
-  <%- if current_exam.finished? -%>
-    <%= link_to 'Back to index', {:action => 'index'}, :class => 'button blue' %>
-  <%- else -%>
-    <%= link_to 'Exam', {:action => 'exam'}, :class => 'button blue' %>
-  <%- end -%>
-</p>
+  </ul>
+<%- end -%>

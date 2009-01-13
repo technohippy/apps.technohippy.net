@@ -13,8 +13,12 @@ class Iknow3gExam < ActiveRecord::Base
     random_items[0..(NUM_OF_ITEMS-1)].each_with_index do |item, index|
       if item['sentences'].nil? or item['sentences'].empty?
         item['sentences'] = Iknow3gApi.search_sentences URI.escape(item['cue']['text'])
+        while !item['sentences'].empty? and item['sentences'].first['sound'].nil?
+          item['sentences'].shift
+        end
       end
-      item_record = Iknow3gItem.create :key => item['cue']['text'], :data => item, :have_not_sentence => item['sentences'].empty?
+      no_sentence_langs = ['ja', 'cn']
+      item_record = Iknow3gItem.create :key => item['cue']['text'], :data => item, :have_not_sentence => (item['sentences'].empty? or no_sentence_langs.include? item['cue']['language'])
       #self.progresses << Iknow3gProgress.create(:item => item_record, :point => 0)
       Iknow3gProgress.create :exam => self, :item => item_record, :point => 0, :position => index
     end

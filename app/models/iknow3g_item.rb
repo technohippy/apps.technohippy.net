@@ -2,10 +2,13 @@ class Iknow3gItem < ActiveRecord::Base
   has_many :progresses, :class_name => 'Iknow3gProgress', :foreign_key => 'iknow3g_item_id'
   
   def self.valid_hash?(hash)
+    hash['cue']['language']
     hash['cue']['text']
     hash['cue']['sound']
-    hash['responses'][0]['quizzes'][0]['question']
-    hash['responses'][0]['quizzes'][0]['answer']
+    # TODO
+    #hash['responses'][0]['quizzes'][0]['question']
+    #hash['responses'][0]['quizzes'][0]['answer']
+    hash['responses'][0]['text']
     true
   rescue
     false
@@ -15,11 +18,15 @@ class Iknow3gItem < ActiveRecord::Base
   def data=(hash); self[:data] = hash.to_json end
   def data; JSON.parse self[:data] end
 
+  def lang; data['cue']['language'] end
   def text; data['cue']['text'] end
   def sound; data['cue']['sound'] end
 
-  def translation; data['responses'][0]['quizzes'][0]['question'] end
-  def word; data['responses'][0]['quizzes'][0]['answer'] end
+  # TODO
+  #def translation; data['responses'][0]['quizzes'][0]['question'] end
+  #def word; data['responses'][0]['quizzes'][0]['answer'] end
+  def translation; data['responses'][0]['text'] end
+  def word; text end
 
   def distractors
     data['responses'][0]['quizzes'].find{|q| q['type'] == 'Multiple Choice'}['distractors']

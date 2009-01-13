@@ -1,7 +1,7 @@
-<%- if @item.sentence_text_image -%>
-<ul>
-  <li style="text-align:center"><%= image_tag @item.sentence_text_image, :width => '250' %></li>
-</ul>
+<%- if @item.sentence and @item.sentence_text_image -%>
+  <ul>
+    <li style="text-align:center"><%= image_tag @item.sentence_text_image, :width => '250' %></li>
+  </ul>
 <%- end -%>
 <ul>
   <li>
@@ -14,9 +14,11 @@
     <%= @item.translation %>
   </li>
 </ul>
-<ul class="data">
-  <li>
-    <p><%= @item.sentence_text %></p>
-  </li>
-</ul>
-<%= replay_button @item.sentence_sound, 'x30' %>
+<%- if @item.sentence -%>
+  <ul class="data">
+    <li>
+      <p><%= @item.sentence_text %></p>
+    </li>
+  </ul>
+  <%= replay_button @item.sentence_sound, 'x30' %>
+<%- end -%>
